@@ -29,9 +29,7 @@
     narrowCtrl.narrowMenu = function() {
       if(narrowCtrl.textSearch !== "") {
         promise = MenuSearchService.getMatchedMenuItems(narrowCtrl.textSearch);
-        console.log(promise);
         promise.then(function(response) {
-        console.log(response);
         narrowCtrl.found = response;
         if(narrowCtrl.found.length < 1) {
           narrowCtrl.message = "Nothing found!";
@@ -43,12 +41,11 @@
         narrowCtrl.message = "Nothing found!";
         narrowCtrl.found = [];
       }
-    };
+    }
 
     narrowCtrl.removeItem = function(itemIndex) {
-      console.log("Ha ingresado a leiminiar");
+      narrowCtrl.found.splice(itemIndex.index, 1);
     };
-
   }
 
   function MenuSearchService($http) {
@@ -71,7 +68,6 @@
                 }
               })
             })
-            console.log('Num reg found: ', foundItems.length);
             return foundItems;
           });
           return response;

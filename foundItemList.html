@@ -1,5 +1,6 @@
 <ul>
   <li ng-repeat="itemMenu in list.found">
-    {{ itemMenu.short_name +','+itemMenu.name+','+itemMenu.description }} <button ng-click="list.onRemove({index: $index});">Don´t want this one!</button>
+    {{ itemMenu.short_name +','+itemMenu.name+','+itemMenu.description }} <button ng-click="list.removeItem({index: $index});">Don´t want this one!</button>
   </li>
 </ul>
+<div style="color:red;font-weight:bold" ng-if="list.message">{{list.message}}</div>
